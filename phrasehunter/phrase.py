@@ -6,6 +6,7 @@ class Phrase():
     
     def display(self, guesses):
         for i in range(len(guesses)):
+            print()
             for j in range(len(self.phrase)):
                 if guesses[i] == self.phrase[j]:
                     print('{}'.format(guesses[i]), end=' ')

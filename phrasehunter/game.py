@@ -22,7 +22,7 @@ class Game():
 
         while self.missed <= 5:
             print('Number missed: {}'.format(self.missed))
-            print()
+            print(self.active_phrase.phrase)
             self.active_phrase.display(self.guesses)
             print()
 
@@ -31,7 +31,7 @@ class Game():
 
             if not self.active_phrase.check_letter(user_guess):
                 self.missed += 1
-
+            
     def get_random_phrase(self):
         rand_numb = random.randint(0, len(self.phrases)-1)
         return self.phrases[rand_numb]
