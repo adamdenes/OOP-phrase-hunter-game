@@ -12,7 +12,7 @@ class Phrase():
                 print('_', end=' ')
 
     def check_letter(self, guess):
-        if guess in self.phrase:
+        if str(guess) in self.phrase:
             return True
         return False 
 

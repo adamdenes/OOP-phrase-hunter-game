@@ -1,4 +1,5 @@
 # Create your Game class logic in here.
+import re
 import random
 from phrasehunter.phrase import Phrase
 
@@ -48,8 +49,21 @@ class Game():
         print()
 
     def get_guess(self):
-        guess = input('\nGuess a letter: ')
-        return guess
+        while True:
+            try:
+                guess = input('\nGuess a letter: ').lower()
+                
+                if len(guess) != 1:
+                    raise ValueError('\nOnly one character should be used at a time!')
+                elif re.match(r'\d+', guess, re.I):
+                    raise ValueError('\nNumbers are not allowed!')
+                elif re.match(r'[^\w]', guess, re.I):
+                    raise ValueError('\nPlease only use letter characters! [a-z]')
+                else:
+                    return guess
+            except ValueError as ve:
+                print('{} Please guess again...'.format(ve))
+                continue
 
     def game_over(self):
         if self.missed == 5:
