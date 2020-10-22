@@ -5,14 +5,11 @@ class Phrase():
         self.phrase = phrase.lower()
     
     def display(self, guesses):
-        for i in range(len(guesses)):
-            print()
-            for j in range(len(self.phrase)):
-                if guesses[i] == self.phrase[j]:
-                    print('{}'.format(guesses[i]), end=' ')
-                else:
-                    print('_', end=' ')
-        print()
+        for l in self.phrase:
+            if l in guesses:
+                print('{}'.format(l), end =' ')
+            else:
+                print('_', end=' ')
 
     def check_letter(self, guess):
         if guess in self.phrase:
