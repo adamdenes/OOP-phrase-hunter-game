@@ -5,9 +5,9 @@ class Phrase():
         self.phrase = phrase.lower()
     
     def display(self, guesses):
-        for l in self.phrase:
-            if l in guesses:
-                print('{}'.format(l), end =' ')
+        for letter in self.phrase:
+            if letter in guesses:
+                print('{}'.format(letter), end =' ')
             else:
                 print('_', end=' ')
 
@@ -16,5 +16,8 @@ class Phrase():
             return True
         return False 
 
-    def check_complete(self):
-        pass
+    def check_complete(self, guesses):
+        for letter in self.phrase:
+            if letter not in guesses:
+                return False
+        return True

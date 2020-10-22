@@ -20,9 +20,8 @@ class Game():
     def start(self):
         self.welcome()
 
-        while self.missed <= 5:
-            print('Number missed: {}'.format(self.missed))
-            print(self.active_phrase.phrase)
+        while self.missed < 5 and not self.active_phrase.check_complete(self.guesses):
+            print('Number missed: {}\n'.format(self.missed))
             self.active_phrase.display(self.guesses)
             print()
 
@@ -31,7 +30,9 @@ class Game():
 
             if not self.active_phrase.check_letter(user_guess):
                 self.missed += 1
-            
+
+        self.game_over()
+
     def get_random_phrase(self):
         rand_numb = random.randint(0, len(self.phrases)-1)
         return self.phrases[rand_numb]
@@ -47,8 +48,11 @@ class Game():
         print()
 
     def get_guess(self):
-        guess = input('Guess a letter: ')
+        guess = input('\nGuess a letter: ')
         return guess
 
     def game_over(self):
-        pass
+        if self.missed == 5:
+            print('\nGame Over! Better luck next time...')
+        else:
+            print('\nCongratulations! You Won!')
